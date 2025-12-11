@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự Án Nuôi Bé - Real 100000%</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <style>
+        :root {
+            --text-main: #1a202c; 
+            --text-heading: #2d3748;
+            --accent-color: #6b46c1; 
+            --green: #2f855a;
+            --red: #c53030;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 20px 10px;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        /* --- ULTRA GLASS STYLE --- */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            border-left: 1px solid rgba(255, 255, 255, 0.5);
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, background 0.3s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* --- Language Switcher --- */
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .lang-btn {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.4);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background: rgba(255,255,255,0.9);
+            color: #333;
+            transform: scale(1.1);
+        }
+
+        /* --- Header --- */
+        .header-content {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .logo-box {
+            background: rgba(255,255,255,0.25);
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.6);
+            font-size: 50px;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: white;
+            font-weight: 900;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
+        }
+
+        .subtitle-box {
+            background: rgba(0, 0, 0, 0.15); 
+            padding: 8px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: 700;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* --- Content Elements --- */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-heading);
+            margin: 10px 0 25px;
+            display: flex;
+            align-items: center;
+            text-shadow: 0 1px 1px rgba(255,255,255,0.5);
+        }
+
+        .section-title i { 
+            margin-right: 12px; 
+            color: #fff;
+            background: var(--accent-color);
+            padding: 8px;
+            border-radius: 10px;
+            font-size: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.1); 
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s;
+        }
+
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.02);
+        }
+
+        .feature-icon { 
+            font-size: 32px; 
+            margin-bottom: 15px; 
+            color: var(--text-main);
+            filter: drop-shadow(0 2px 2px rgba(255,255,255,0.5));
+        }
+
+        .feature-item h4 { margin-bottom: 5px; color: #1a202c; }
+        .feature-item p { font-size: 0.9rem; font-weight: 600; color: #4a5568; }
+
+        .styled-list li {
+            list-style: none;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: flex-start;
+            font-weight: 600;
+        }
+        .styled-list li:last-child { border-bottom: none; }
+        .styled-list li i { margin-right: 12px; margin-top: 4px; font-size: 1.1rem; }
+        .check-green { color: #276749; text-shadow: 0 1px 0 rgba(255,255,255,0.5); }
+        .cross-red { color: #9B2C2C; text-shadow: 0 1px 0 rgba(255,255,255,0.5); }
+
+        .comparison-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .comp-box {
+            padding: 15px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .comp-bad { border-left: 5px solid var(--red); }
+        .comp-good { border-left: 5px solid var(--green); }
+
+        /* Donate Section Styles */
+        .donate-section {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%);
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+
+        .qr-area {
+            background: white; 
+            padding: 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 20px 0;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .qr-img {
+            max-width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .donate-btn {
+            background: #2d3748;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+            margin-top: 10px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .donate-btn:hover { 
+            transform: scale(1.05); 
+            background: white;
+            color: #2d3748;
+        }
+
+        /* Author Section */
+        .author-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .author-info h3 { margin-bottom: 5px; color: var(--text-heading); }
+        .author-info p { font-size: 0.95rem; margin-bottom: 10px; font-weight: 600; }
+        .social-links a {
+            color: var(--text-main);
+            font-size: 1.3rem;
+            margin-right: 15px;
+            transition: color 0.2s;
+            background: rgba(255,255,255,0.4);
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        .social-links a:hover { background: white; color: var(--accent-color); }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 30px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* --- MODAL STYLES --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.4); 
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-box {
+            width: 90%;
+            max-width: 450px;
+            background: rgba(255, 255, 255, 0.85); 
+            text-align: center;
+            position: relative;
+            animation: popIn 0.3s ease;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #555;
+            transition: color 0.2s;
+        }
+        .close-btn:hover { color: var(--red); }
+
+        .modal-box h3 { margin-bottom: 20px; color: var(--accent-color); }
+
+        .modal-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .modal-btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: transform 0.2s;
+        }
+        .modal-btn:hover { transform: scale(1.05); }
+        .modal-btn.confirm { background: var(--green); color: white; }
+        .modal-btn.cancel { background: var(--red); color: white; }
+        .modal-btn:disabled { background: #ccc; cursor: not-allowed; }
+
+        .modal-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-family: inherit;
+        }
+        .modal-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .features-grid { grid-template-columns: 1fr 1fr; }
+            .author-card { flex-direction: column; text-align: center; }
+            .glass-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="lang-switch">
+        <button class="lang-btn active" onclick="setLang('vi')">🇻🇳 VN</button>
+        <button class="lang-btn" onclick="setLang('en')">🇬🇧 EN</button>
+        <button class="lang-btn" onclick="setLang('jp')">🇯🇵 JP</button>
+        <button class="lang-btn" onclick="setLang('cn')">cn CN</button>
+    </div>
+
+    <div class="container">
+        <div class="header-content">
+            <div class="logo-box">
+                <i class="fa-solid fa-baby-carriage"></i>
+            </div>
+            <h1 data-i18n="title">DỰ ÁN NUÔI BÉ</h1>
+            <div class="subtitle-box">
+                <span data-i18n="subtitle">Bé hứa ăn ngoan, ngủ kỹ, sao kê đầy đủ! 💯</span>
+            </div>
+        </div>
+
+        <br><br>
+
+        <div class="glass-card">
+            <div class="section-title">
+                <i class="fa-solid fa-bullseye"></i> <span data-i18n="why_title">Tại Sao Nên Nuôi Bé?</span>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fa-solid fa-file-invoice-dollar feature-icon"></i>
+                    <h4 data-i18n="feat_1_title">Sao Kê Bỉm Sữa</h4>
+                    <p data-i18n="feat_1_desc">Cập nhật giá bỉm từng phút! Nhanh hơn tốc độ ánh sáng.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-magnifying-glass feature-icon"></i>
+                    <h4 data-i18n="feat_2_title">Minh Bạch Output</h4>
+                    <p data-i18n="feat_2_desc">Báo cáo cả số lần thay tã/ngày. Không giấu giếm.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-piggy-bank feature-icon"></i>
+                    <h4 data-i18n="feat_3_title">Chi Tiêu Hợp Lý</h4>
+                    <p data-i18n="feat_3_desc">Không mua đồ chơi xàm, chỉ mua sữa xịn & vitamin.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-mobile-screen feature-icon"></i>
+                    <h4 data-i18n="feat_4_title">App Tracking</h4>
+                    <p data-i18n="feat_4_desc">Theo dõi 24/7 bé ăn gì. Như 'Big Mother' đang nhìn.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <div class="section-title">
+                <i class="fa-solid fa-medal"></i> <span data-i18n="commit_title">Cam Kết Vàng Của Bé</span>
+            </div>
+            <ul class="styled-list">
+                <li><i class="fa-solid fa-check check-green"></i> <span data-i18n="commit_1"><strong>Sao kê mỗi ngày:</strong> Cập nhật lúc 6h sáng (lúc bé dậy khóc đòi ăn).</span></li>
+                <li><i class="fa-solid fa-check check-green"></i> <span data-i18n="commit_2"><strong>Có hóa đơn:</strong> Chụp hình bill siêu thị, lưu biên lai đầy đủ!</span></li>
+                <li><i class="fa-solid fa-check check-green"></i> <span data-i18n="commit_3"><strong>Video unboxing:</strong> Mở hộp sữa mới live trên Facebook cho các cô chú xem!</span></li>
+                <li><i class="fa-solid fa-check check-green"></i> <span data-i18n="commit_4"><strong>Không block:</strong> Ai hỏi 'cháu lớn chưa' nhiều lần cũng không quạu.</span></li>
+            </ul>
+        </div>
+
+        <div class="glass-card">
+            <div class="section-title">
+                <i class="fa-solid fa-sack-dollar"></i> <span data-i18n="comp_title">So Sánh Với "Con Nhà Người Ta"</span>
+            </div>
+            <div class="comparison-wrapper">
+                <div class="comp-box comp-bad">
+                    <h4 style="color:#9B2C2C; margin-bottom:5px;" data-i18n="others_title">❌ Con Nhà Người Ta:</h4>
+                    <ul class="styled-list" style="font-size:0.9rem; border:none;">
+                        <li><i class="fa-solid fa-xmark cross-red"></i> <span data-i18n="others_1">Nuôi mãi không lớn, lười ăn.</span></li>
+                        <li><i class="fa-solid fa-xmark cross-red"></i> <span data-i18n="others_2">Khóc đêm không rõ lý do.</span></li>
+                    </ul>
+                </div>
+                <div class="comp-box comp-good">
+                    <h4 style="color:#276749; margin-bottom:5px;" data-i18n="me_title">✅ Bé Nhà Mình:</h4>
+                    <ul class="styled-list" style="font-size:0.9rem; border:none;">
+                        <li><i class="fa-solid fa-check check-green"></i> <span data-i18n="me_1">Sao kê trước khi mua (để các cô chú duyệt).</span></li>
+                        <li><i class="fa-solid fa-check check-green"></i> <span data-i18n="me_2">Cười tươi mỗi khi thấy tiếng 'ting ting'.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card donate-section">
+            <h2 data-i18n="donate_head">DONATE NGAY ĐI, BÉ ĐANG CƯỜI! 😍</h2>
+            <p data-i18n="donate_sub">Quét mã QR để mua sữa cho bé</p>
+            
+            <div class="qr-area">
+                <img src="1000056682.jpg" alt="QR Code" class="qr-img">
+            </div>
+            
+            <br>
+            <button class="donate-btn" id="openDonateModal">
+                <i class="fa-solid fa-gift"></i> <span data-i18n="btn_donate">TÔI MUỐN NUÔI BÉ!</span>
+            </button>
+            <p style="margin-top:10px; font-size:0.85rem; font-style:italic;" data-i18n="donate_note">Chuyển xong là có email tự động cảm ơn!</p>
+        </div>
+
+        <div class="glass-card">
+            <div class="section-title">
+                <i class="fa-solid fa-user-pen"></i> <span data-i18n="author_title">Thông Tin Tác Giả</span>
+            </div>
+            <div class="author-card">
+                <img src="https://ui-avatars.com/api/?name=Admin+Be&background=random&size=128" alt="Author" class="author-avatar">
+                <div class="author-info">
+                    <h3 data-i18n="author_name">Admin Của Bé</h3>
+                    <p data-i18n="author_desc">Là một ông bố/bà mẹ bỉm sữa đam mê công nghệ, thích code dạo và minh bạch tài chính gia đình.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="https://github.com/lylyhecker"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 Raising Baby Project.</p>
+        </footer>
+
+    </div>
+
+    <div id="donateModal" class="modal-overlay">
+        <div class="glass-card modal-box">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            
+            <div id="step1">
+                <h3 data-i18n="modal_step1_title">Cô chú đã Donate cho 'nuôi bé' chưa? 🤔</h3>
+                <div class="modal-actions">
+                    <button class="modal-btn confirm" onclick="goToStep2()" data-i18n="modal_btn_yes">Rồi ạ! 😎</button>
+                    <button class="modal-btn cancel" onclick="showSadFace()" data-i18n="modal_btn_no">Chưa... 😢</button>
+                </div>
+            </div>
+
+            <div id="step2" style="display:none;">
+                <h3 data-i18n="modal_step2_title">Cô chú đã donate như nào ạ?</h3>
+                <p data-i18n="modal_step2_desc">(Nhập nội dung lời nhắn chuyển khoản nhé)</p>
+                <input type="text" id="donateContent" class="modal-input" data-i18n-placeholder="modal_input_placeholder" placeholder="Ví dụ: 50k...">
+                <button class="modal-btn confirm" onclick="checkDonateContent()" data-i18n="modal_btn_confirm">Gửi xác nhận</button>
+            </div>
+
+            <div id="step3" style="display:none;">
+                <h3 data-i18n="modal_step3_title">Wow! 🤟</h3>
+                <p data-i18n="modal_step3_desc">Nhập Gmail để bé gửi quà VIP nhé:</p>
+                <input type="email" id="donorEmail" class="modal-input" placeholder="name@gmail.com">
+                <button class="modal-btn confirm" id="btnSendMail" onclick="finishDonation()" data-i18n="modal_btn_send_mail">
+                    Gửi Gmail Ngay
+                </button>
+                <p id="mailStatus" style="font-size:0.8rem; margin-top:5px; color:#555;"></p>
+            </div>
+
+            <div id="stepSad" style="display:none;">
+                <h3 style="color:#c53030" data-i18n="modal_sad_title">Cô chú chưa donate cho bé nơi HUHU 😭😭</h3>
+                <p data-i18n="modal_sad_desc">Bé buồn thiu... (Cô chú chuyển khoản đi rồi bé cười lại nha)</p>
+                <div class="modal-actions">
+                    <button class="modal-btn" onclick="closeModal()" data-i18n="modal_btn_close">Đóng</button>
+                </div>
+            </div>
+            
+             <div id="stepThanks" style="display:none;">
+                <h3 style="color:#2f855a" data-i18n="modal_thanks_title">Cảm ơn cô chú nhiều nha! ❤️</h3>
+                <p data-i18n="modal_thanks_desc">Bé đã ghi nhận tấm lòng của cô chú rồi ạ.</p>
+                <div class="modal-actions">
+                    <button class="modal-btn confirm" onclick="closeModal()" data-i18n="modal_btn_ok">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. SETUP EMAILJS (KEY CỦA BẠN GIỮ NGUYÊN) ---
+        const EMAIL_PUBLIC_KEY = "3VZrDffyFA4HbAg-C"; 
+        const EMAIL_SERVICE_ID = "service_aoqpilq"; 
+        const EMAIL_TEMPLATE_ID = "template_motbsfr"; 
+
+        (function(){
+            emailjs.init(EMAIL_PUBLIC_KEY);
+        })();
+
+
+        // --- 2. LOGIC ĐA NGÔN NGỮ (Bao gồm cả Modal và Tiếng Trung) ---
+        const translations = {
+            vi: {
+                title: "DỰ ÁN NUÔI BÉ",
+                subtitle: "Bé hứa ăn ngoan, ngủ kỹ, sao kê đầy đủ! 💯",
+                why_title: "Tại Sao Nên Nuôi Bé?",
+                feat_1_title: "Sao Kê Bỉm Sữa",
+                feat_1_desc: "Cập nhật giá bỉm từng phút! Nhanh hơn tốc độ ánh sáng.",
+                feat_2_title: "Minh Bạch Output",
+                feat_2_desc: "Báo cáo cả số lần thay tã/ngày. Không giấu giếm.",
+                feat_3_title: "Chi Tiêu Hợp Lý",
+                feat_3_desc: "Không mua đồ chơi xàm, chỉ mua sữa xịn & vitamin.",
+                feat_4_title: "App Tracking",
+                feat_4_desc: "Theo dõi 24/7 bé ăn gì. Như 'Big Mother' đang nhìn.",
+                commit_title: "Cam Kết Vàng Của Bé",
+                commit_1: "<strong>Sao kê mỗi ngày:</strong> Cập nhật lúc 6h sáng (lúc bé dậy khóc đòi ăn).",
+                commit_2: "<strong>Có hóa đơn:</strong> Chụp hình bill siêu thị, lưu biên lai đầy đủ!",
+                commit_3: "<strong>Video unboxing:</strong> Mở hộp sữa mới live trên Facebook cho các cô chú xem!",
+                commit_4: "<strong>Không block:</strong> Ai hỏi 'cháu lớn chưa' nhiều lần cũng không quạu.",
+                comp_title: "So Sánh Với 'Con Nhà Người Ta'",
+                others_title: "❌ Con Nhà Người Ta:",
+                others_1: "Nuôi mãi không lớn, lười ăn.",
+                others_2: "Khóc đêm không rõ lý do.",
+                me_title: "✅ Bé Nhà Mình:",
+                me_1: "Sao kê trước khi mua (để các cô chú duyệt).",
+                me_2: "Cười tươi mỗi khi thấy tiếng 'ting ting'.",
+                donate_head: "DONATE NGAY ĐI, BÉ ĐANG CƯỜI! 😍",
+                donate_sub: "Quét mã QR để mua sữa cho bé",
+                btn_donate: "TÔI MUỐN NUÔI BÉ!",
+                donate_note: "Chuyển xong là có email tự động cảm ơn!",
+                author_title: "Thông Tin Tác Giả",
+                author_name: "Admin Của Bé",
+                author_desc: "Là một ông bố/bà mẹ bỉm sữa đam mê công nghệ, thích code dạo và minh bạch tài chính gia đình.",
+                // MODAL VI
+                modal_step1_title: "Cô chú đã Donate cho 'nuôi bé' chưa? 🤔",
+                modal_btn_yes: "Rồi ạ! 😎",
+                modal_btn_no: "Chưa... 😢",
+                modal_step2_title: "Cô chú đã donate như nào ạ?",
+                modal_step2_desc: "(Nhập nội dung lời nhắn chuyển khoản nhé)",
+                modal_input_placeholder: "Ví dụ: 50k...",
+                modal_btn_confirm: "Gửi xác nhận",
+                modal_step3_title: "Wow! 🤟",
+                modal_step3_desc: "Nhập Gmail để bé gửi quà VIP nhé:",
+                modal_btn_send_mail: "Gửi Gmail Ngay",
+                modal_sad_title: "Cô chú chưa donate cho bé nơi HUHU 😭😭",
+                modal_sad_desc: "Bé buồn thiu... (Cô chú chuyển khoản đi rồi bé cười lại nha)",
+                modal_btn_close: "Đóng",
+                modal_thanks_title: "Cảm ơn cô chú nhiều nha! ❤️",
+                modal_thanks_desc: "Bé đã ghi nhận tấm lòng của cô chú rồi ạ.",
+                modal_btn_ok: "OK"
+            },
+            en: {
+                title: "RAISE THE BABY",
+                subtitle: "I promise to eat well, sleep well, and audit everything! 💯",
+                why_title: "Why Sponsor Me?",
+                feat_1_title: "Diaper Audit",
+                feat_1_desc: "Real-time diaper price updates! Faster than light speed.",
+                feat_2_title: "Output Transparency",
+                feat_2_desc: "Reporting daily diaper changes. No secrets.",
+                feat_3_title: "Smart Spending",
+                feat_3_desc: "No useless toys, only premium milk & vitamins.",
+                feat_4_title: "App Tracking",
+                feat_4_desc: "24/7 tracking of what I eat. 'Big Mother' is watching.",
+                commit_title: "Golden Commitments",
+                commit_1: "<strong>Daily Statements:</strong> Updated at 6 AM (when I wake up crying).",
+                commit_2: "<strong>Receipts:</strong> Photos of supermarket bills, all saved!",
+                commit_3: "<strong>Unboxing Videos:</strong> Live streaming new milk cans on Facebook!",
+                commit_4: "<strong>No Blocking:</strong> I won't get mad if you ask 'Are you big yet?'.",
+                comp_title: "Comparison with 'Neighbor's Kid'",
+                others_title: "❌ Neighbor's Kid:",
+                others_1: "Takes forever to grow, refuses to eat.",
+                others_2: "Cries at night for no reason.",
+                me_title: "✅ Me (The Good Kid):",
+                me_1: "Audit before purchase (for your approval).",
+                me_2: "Big smile whenever I hear the notification sound.",
+                donate_head: "DONATE NOW, I'M SMILING! 😍",
+                donate_sub: "Scan QR to buy me milk",
+                btn_donate: "I WANT TO SPONSOR!",
+                donate_note: "Automatic thank you email upon transfer!",
+                author_title: "Author Info",
+                author_name: "Baby's Admin",
+                author_desc: "A tech-savvy parent who loves coding and financial transparency.",
+                // MODAL EN
+                modal_step1_title: "Have you donated to the Baby yet? 🤔",
+                modal_btn_yes: "Yes! 😎",
+                modal_btn_no: "Not yet... 😢",
+                modal_step2_title: "How did you donate?",
+                modal_step2_desc: "(Please enter your transfer message)",
+                modal_input_placeholder: "Ex: 50k...",
+                modal_btn_confirm: "Confirm",
+                modal_step3_title: "Wow! 🤟",
+                modal_step3_desc: "Enter Gmail for a VIP gift:",
+                modal_btn_send_mail: "Send Gmail Now",
+                modal_sad_title: "You haven't donated yet HUHU 😭😭",
+                modal_sad_desc: "Baby is sad... (Please transfer so baby can smile again)",
+                modal_btn_close: "Close",
+                modal_thanks_title: "Thank you so much! ❤️",
+                modal_thanks_desc: "Baby has received your kindness.",
+                modal_btn_ok: "OK"
+            },
+            jp: {
+                title: "赤ちゃん育成プロジェクト",
+                subtitle: "よく食べ、よく眠り、すべて公開します！💯",
+                why_title: "なぜ支援するの？",
+                feat_1_title: "おむつ監査",
+                feat_1_desc: "おむつ価格をリアルタイム更新！光速より速い。",
+                feat_2_title: "排泄の透明性",
+                feat_2_desc: "毎日のおむつ交換回数を報告。隠し事なし。",
+                feat_3_title: "賢い支出",
+                feat_3_desc: "無駄なおもちゃは買いません。高級ミルクとビタミンのみ。",
+                feat_4_title: "追跡アプリ",
+                feat_4_desc: "24時間365日食事管理。「ビッグ・マザー」が見ている。",
+                commit_title: "黄金の約束",
+                commit_1: "<strong>毎日の明細:</strong> 朝6時（泣いて起きる時間）に更新。",
+                commit_2: "<strong>領収書あり:</strong> スーパーのレシート写真を完全保存！",
+                commit_3: "<strong>開封動画:</strong> 新しいミルク缶をFacebookでライブ配信！",
+                commit_4: "<strong>ブロックなし:</strong> 「大きくなった？」と何度聞かれても怒りません。",
+                comp_title: "「隣の子」との比較",
+                others_title: "❌ 隣の子:",
+                others_1: "なかなか成長しない、食べない。",
+                others_2: "理由なく夜泣きする。",
+                me_title: "✅ うちの子（私）:",
+                me_1: "購入前に監査（承認のため）。",
+                me_2: "通知音が鳴ると満面の笑み。",
+                donate_head: "今すぐ寄付を！笑ってます！😍",
+                donate_sub: "QRコードでミルクを買ってね",
+                btn_donate: "育てたい！",
+                donate_note: "送金完了後、自動でお礼メールが届きます！",
+                author_title: "作者情報",
+                author_name: "赤ちゃんの管理者",
+                author_desc: "テクノロジー好きで、家計の透明性を愛する親バカプログラマー。",
+                // MODAL JP
+                modal_step1_title: "もう寄付してくれましたか？ 🤔",
+                modal_btn_yes: "はい！ 😎",
+                modal_btn_no: "まだです... 😢",
+                modal_step2_title: "どうやって寄付しましたか？",
+                modal_step2_desc: "(振込メッセージを入力してください)",
+                modal_input_placeholder: "例: 50k...",
+                modal_btn_confirm: "確認",
+                modal_step3_title: "すごい！ 🤟",
+                modal_step3_desc: "VIPギフトのためにGmailを入力してください:",
+                modal_btn_send_mail: "今すぐ送信",
+                modal_sad_title: "まだ寄付してないの？うわーん 😭😭",
+                modal_sad_desc: "赤ちゃんは悲しいです... (送金してくれたらまた笑います)",
+                modal_btn_close: "閉じる",
+                modal_thanks_title: "本当にありがとうございます！ ❤️",
+                modal_thanks_desc: "あなたの優しさを受け取りました。",
+                modal_btn_ok: "OK"
+            },
+            cn: {
+                title: "养娃计划",
+                subtitle: "宝宝保证：乖乖吃饭，好好睡觉，账单全公开！💯",
+                why_title: "为什么要“云养”这娃？",
+                feat_1_title: "奶粉尿布账单",
+                feat_1_desc: "尿布价格每分钟更新！比光速还快。",
+                feat_2_title: "“产出”透明化",
+                feat_2_desc: "每日换尿布次数全报告。绝不隐瞒。",
+                feat_3_title: "支出合理",
+                feat_3_desc: "不买垃圾玩具，只买优质奶粉和维生素。",
+                feat_4_title: "App 实时追踪",
+                feat_4_desc: "24/7 监控宝宝饮食。就像“Big Mother”在注视。",
+                commit_title: "宝宝的黄金承诺",
+                commit_1: "<strong>每日对账：</strong> 早上6点更新（也就是宝宝哭着要饭的时候）。",
+                commit_2: "<strong>有凭有据：</strong> 超市小票拍照留存，收据一张不少！",
+                commit_3: "<strong>开箱视频：</strong> 脸书直播开奶粉罐，给叔叔阿姨们检查！",
+                commit_4: "<strong>绝不拉黑：</strong> 被问多少次“长大了没”也绝不生气。",
+                comp_title: "与“别人家的孩子”对比",
+                others_title: "❌ 别人家的孩子：",
+                others_1: "怎么养都不长肉，厌食。",
+                others_2: "半夜莫名其妙哭闹。",
+                me_title: "✅ 我家宝宝：",
+                me_1: "买前先亮账单（给叔叔阿姨过目）。",
+                me_2: "一听到“叮叮”入账声就笑开花。",
+                donate_head: "快打赏吧，宝宝在笑呢！😍",
+                donate_sub: "扫码给宝宝买奶粉",
+                btn_donate: "我要供养宝宝！",
+                donate_note: "转账成功即刻收到自动感谢邮件！",
+                author_title: "作者信息",
+                author_name: "宝宝的管理员",
+                author_desc: "一位热爱科技的奶爸/宝妈，喜欢写代码，并致力于家庭财务透明化。",
+                // MODAL CN
+                modal_step1_title: "叔叔阿姨给宝宝打赏了吗？🤔",
+                modal_btn_yes: "打赏啦！😎",
+                modal_btn_no: "还没有... 😢",
+                modal_step2_title: "是怎么打赏的呀？",
+                modal_step2_desc: "(请输入转账留言)",
+                modal_input_placeholder: "例如：50k...",
+                modal_btn_confirm: "确认发送",
+                modal_step3_title: "哇！土豪 🤟",
+                modal_step3_desc: "请输入Gmail接收VIP礼物：",
+                modal_btn_send_mail: "立即发送邮件",
+                modal_sad_title: "叔叔阿姨还没打赏，呜呜呜 😭😭",
+                modal_sad_desc: "宝宝伤心了... (打赏完宝宝就笑了)",
+                modal_btn_close: "关闭",
+                modal_thanks_title: "谢谢叔叔阿姨！❤️",
+                modal_thanks_desc: "宝宝收到心意啦。",
+                modal_btn_ok: "好的"
+            }
+        };
+
+        function setLang(lang) {
+            // Đổi text
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Đổi placeholder (chữ mờ trong ô nhập)
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+                const key = element.getAttribute('data-i18n-placeholder');
+                if (translations[lang][key]) {
+                    element.placeholder = translations[lang][key];
+                }
+            });
+
+            // Active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        const modal = document.getElementById('donateModal');
+        const openBtn = document.getElementById('openDonateModal');
+        
+        openBtn.onclick = function() {
+            modal.style.display = 'flex';
+            resetModal();
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        function resetModal() {
+            document.getElementById('step1').style.display = 'block';
+            document.getElementById('step2').style.display = 'none';
+            document.getElementById('step3').style.display = 'none';
+            document.getElementById('stepSad').style.display = 'none';
+            document.getElementById('stepThanks').style.display = 'none';
+            document.getElementById('donateContent').value = '';
+            document.getElementById('donorEmail').value = '';
+            document.getElementById('mailStatus').innerHTML = '';
+            document.getElementById('btnSendMail').disabled = false;
+            document.getElementById('btnSendMail').innerText = "Gửi Gmail Ngay";
+        }
+
+        function goToStep2() {
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('step2').style.display = 'block';
+        }
+
+        function showSadFace() {
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('stepSad').style.display = 'block';
+        }
+
+        function checkDonateContent() {
+            const content = document.getElementById('donateContent').value.toLowerCase().trim();
+            
+            if (content.includes("rick roll")) {
+                document.getElementById('step2').style.display = 'none';
+                document.getElementById('step3').style.display = 'block';
+            } else {
+                document.getElementById('step2').style.display = 'none';
+                document.getElementById('stepThanks').style.display = 'block';
+            }
+        }
+
+        function finishDonation() {
+            const email = document.getElementById('donorEmail').value;
+            const statusText = document.getElementById('mailStatus');
+            const btn = document.getElementById('btnSendMail');
+
+            if (!email) {
+                alert("Vui lòng nhập Gmail!");
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerText = "Đang gửi...";
+            statusText.innerText = "Đang kết nối với vệ tinh...";
+
+            const templateParams = {
+                to_email: email, 
+                message: "Cảm ơn Cô/Chú đã donate! Bé yêu cô chú nhiều lắm!",
+                from_name: "Dự Án Nuôi Bé"
+            };
+
+            emailjs.send(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    btn.innerText = "Đã gửi!";
+                    statusText.innerText = "Thành công! Check mail ngay nhé!";
+                    statusText.style.color = "green";
+                    
+                    setTimeout(() => {
+                        closeModal();
+                    }, 2000);
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    btn.innerText = "Lỗi rồi :(";
+                    btn.disabled = false;
+                    statusText.innerText = "Lỗi: " + JSON.stringify(error);
+                    statusText.style.color = "red";
+                });
+        }
+    </script>
+</body>
+</html>
